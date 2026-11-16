@@ -1,0 +1,1353 @@
+<!doctype html>
+<html lang="ms"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#4A0E17"><title>Majlis Apresiasi 2026 · SK Taman Skudai Baru</title><meta name="description" content="Majlis Apresiasi Murid Tahun 6 dan Jamuan Akhir Tahun Badan Kepimpinan Sekolah 2026. 18 November 2026, Dewan Bestari."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style> 
+
+#skrin-bunga-api {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* SKRIN PEMBUKAAN (SPLASH SCREEN) */
+#skrin-pembukaan {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #6B1422 0%, #3A0810 100%);
+    z-index: 10000; /* Lebih tinggi daripada bunga api supaya menutup seluruh skrin dahulu */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#skrin-pembukaan.hilang {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.kad-jemputan {
+    max-width: 520px;
+    width: 100%;
+    padding: 40px 28px;
+    border: 1.5px solid rgba(212, 175, 55, 0.6);
+    border-radius: 16px;
+    background: rgba(42, 6, 12, 0.55);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    color: #FFFDF8;
+}
+
+.kad-jemputan .logo-pembukaan {
+    width: 105px;
+    height: 105px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 1.5px solid rgba(212, 175, 55, 0.75);
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 0 auto 16px;
+    display: block;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.kad-jemputan .nama-sekolah {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #E6C875;
+    margin: 0 0 10px;
+}
+
+.kad-jemputan .tema-skrip {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: #F3D98B;
+    margin: 0 0 8px;
+}
+
+.kad-jemputan h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    font-weight: 600;
+    margin: 0 0 14px;
+    color: #FFFFFF;
+    line-height: 1.2;
+}
+
+.kad-jemputan .info-majlis {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.92rem;
+    color: rgba(255, 253, 248, 0.85);
+    margin: 0 0 28px;
+}
+
+#butang-buka-program {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: linear-gradient(135deg, #E5C158 0%, #C59B27 100%);
+    color: #3A0810;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#butang-buka-program:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.55);
+}
+
+
+:root{--blush:#F9ECEE;--maroon:#4A0E17;--gold:#d4ab3a;--serif:'Playfair Display',Georgia,serif;--sans:'Plus Jakarta Sans',Arial,sans-serif;--script:'Great Vibes','Brush Script MT',cursive}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:96px}body{margin:0;background:var(--blush);color:var(--maroon);font-family:var(--sans);font-size:15px;line-height:1.85}a{color:inherit}button,summary,a{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:5px}header{height:78px;position:sticky;top:0;z-index:20;background:var(--blush);border-bottom:1px solid #C59B2740;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;gap:25px}.brand{text-decoration:none;display:flex;align-items:center;gap:12px}.brand img{width:43px;height:43px;object-fit:contain}.brand strong{font-family:var(--serif);font-size:20px;line-height:1.15;display:block}.brand small{display:block;font-size:8px;letter-spacing:2.5px;margin-top:5px}nav{display:flex;align-items:center;gap:25px}nav a{text-decoration:none;font-size:10px;letter-spacing:1.1px;font-weight:700;padding:8px 0;border-bottom:1px solid transparent}nav a:hover,nav a.active{border-color:var(--gold)}.menu{display:none;border:1px solid var(--maroon);background:none;color:var(--maroon);padding:7px 12px;font:inherit;font-size:12px}.hero{position:relative;isolation:isolate;overflow:hidden;background:var(--maroon);color:var(--blush);text-align:center;min-height:820px;display:grid;place-items:center;padding:62px 24px 54px}.hero:before,.hero:after{content:'';position:absolute;top:0;bottom:0;width:20%;z-index:-1;opacity:.7;background:repeating-linear-gradient(92deg,transparent 0%,#C59B2710 7%,#F9ECEE0A 11%,transparent 20%,#00000030 27%,transparent 33%);border-bottom:2px solid var(--gold);filter:drop-shadow(0 15px 12px #00000045)}.hero:before{left:-8%;transform:skewY(-21deg);border-radius:0 0 90% 0}.hero:after{right:-8%;transform:skewY(21deg);border-radius:0 0 0 90%}.frame{position:absolute;inset:20px;border:1px solid #C59B2770;pointer-events:none;z-index:-1}.frame:before,.frame:after{content:'✦';position:absolute;left:50%;color:var(--gold);padding:0 20px;background:var(--maroon);font-size:20px;line-height:1;transform:translateX(-50%)}.frame:before{top:-10px}.frame:after{bottom:-10px}.hero-inner{max-width:1000px;width:100%}.school-logo{width:88px;height:88px;object-fit:contain;display:block;margin:0 auto 19px}.eyebrow{text-transform:uppercase;font-size:10px;font-weight:600;letter-spacing:3px;line-height:1.8;margin:0 0 20px}.hero .eyebrow{color:var(--gold)}.hero h1{font-weight:400;margin:34px 0 18px;line-height:1.08}.calligraphy{display:block;font-family:var(--script);font-size:clamp(64px,8.4vw,116px);font-weight:400;line-height:1.28;color:var(--blush);padding:0 8px}.year-six{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(32px,4.4vw,57px);letter-spacing:.5px}.connector{font-family:var(--serif);font-style:italic;font-size:19px;display:block;margin:17px 0 4px;color:var(--gold)}.subtitle{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.65vw,35px);line-height:1.4;margin:0 auto;max-width:760px}.year{font-size:14px;letter-spacing:7px;color:var(--gold);margin:19px 0 24px}.ornament{color:var(--gold);display:flex;align-items:center;justify-content:center;gap:15px;font-size:15px;margin:20px auto;width:min(300px,80%)}.ornament:before,.ornament:after{content:'';height:1px;width:90px;background:var(--gold)}.slogan{font-family:var(--serif);font-size:clamp(18px,2.2vw,25px);font-style:italic;margin:0;color:var(--gold)}.tagline{font-size:12px;letter-spacing:1px;margin:6px 0 28px}.event-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 30px;font-size:12px;margin-bottom:29px}.event-meta span+span{border-left:1px solid #C59B2780;padding-left:30px}.button{display:inline-flex;align-items:center;justify-content:center;gap:28px;background:var(--gold);color:var(--maroon);padding:12px 24px;font-size:11px;font-weight:700;letter-spacing:1px;text-decoration:none;border:1px solid var(--gold);cursor:pointer;font-family:var(--sans)}.button:hover{background:var(--blush)}.button.outline{background:transparent;color:var(--maroon);border-color:var(--maroon)}.button.outline:hover{background:var(--maroon);color:var(--blush)}.hero-foot{margin:35px 0 0;font-size:8px;letter-spacing:2.4px;color:var(--gold)}.wrap{max-width:1160px;padding:90px 40px;margin:auto}h2{font-family:var(--serif);font-size:clamp(30px,4vw,46px);font-weight:500;line-height:1.25;margin:0 0 24px}h2 em{font-weight:500}h3{font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.4;margin:0 0 12px}p{margin:0 0 18px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:35px}.section-head h2{margin:0}.section-head>p{font-size:12px;max-width:300px;margin:0}.intro{display:grid;grid-template-columns:1fr 1fr;gap:80px}.intro-copy p{font-size:14px}.section-number{font-size:10px;letter-spacing:2px;margin-bottom:25px;color:var(--maroon);font-weight:700}.section-number:before{content:'';display:inline-block;vertical-align:middle;background:var(--gold);width:28px;height:1px;margin-right:12px}details{border-bottom:1px solid #4A0E1726}summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:18px 0;font-size:13px;font-weight:600}summary::-webkit-details-marker{display:none}summary:after{content:'+';font-size:22px;font-weight:400;color:var(--gold)}details[open]>summary:after{content:'−'}details p,details ol{font-size:13px;padding-bottom:15px}ol{padding-left:20px}.participants{border-top:1px solid #C59B2740;border-bottom:1px solid #C59B2740}.participants .wrap{padding-top:65px;padding-bottom:65px}.groups{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #4A0E1726;margin-top:35px;padding-top:30px}.group{text-align:center;padding:10px 15px;border-right:1px solid #4A0E1726}.group:last-child{border:0}.group strong{font-family:var(--serif);font-size:49px;font-weight:500;line-height:1.2;display:block}.group span{display:block;font-size:11px;margin-top:10px}.schedule{display:grid;grid-template-columns:.75fr 1.25fr;gap:70px}.timeline{border-top:1px solid var(--gold)}.timeline article{display:grid;grid-template-columns:100px 1fr;gap:20px;border-bottom:1px solid #4A0E1726;padding:27px 0}.timeline time{font-size:11px;font-weight:700;padding-top:4px}.timeline h3{font-size:22px}.timeline p{font-size:12px;margin-bottom:0}.sessions{font-size:12px;line-height:1.8;padding-left:18px;margin:15px 0 0}.sessions li{padding-bottom:8px}.awards{background:var(--maroon);color:var(--blush)}.awards .wrap{padding-top:65px;padding-bottom:65px}.awards .section-number{color:var(--gold)}.awards h2{font-size:37px}.award-list{display:grid;grid-template-columns:repeat(3,1fr);margin-top:35px}.award-list article{border-top:1px solid #C59B2770;padding:22px 25px 0 0}.award-list article+article{padding-left:30px;border-left:1px solid #C59B2740}.award-list span{color:var(--gold);font-size:11px;letter-spacing:2px}.award-list h3{font-size:24px;margin:12px 0 0}.committee-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:65px}.induk{width:100%;border-collapse:collapse;font-size:12px}.induk th,.induk td{text-align:left;border-bottom:1px solid #4A0E1726;vertical-align:top;padding:15px 9px 15px 0}.induk th{font-weight:600;width:43%}.committee-list{border-top:1px solid var(--gold)}.committee-list summary{font-weight:500;font-size:12px}.committee-list summary .num{color:var(--gold);font-size:10px;min-width:23px}.committee-list summary .label{flex:1}.committee-list ul{list-style:none;font-size:12px;margin:0;padding:0 0 20px 42px}.committee-list li{margin:4px 0}.song{border-top:1px solid #C59B2740;border-bottom:1px solid #C59B2740}.song .wrap{display:grid;grid-template-columns:1fr 1fr;gap:75px}.song p{font-size:13px}.song iframe{width:100%;height:152px;border:0;border-radius:0;margin-top:10px}.song-link{font-size:11px;text-underline-offset:5px}.lyrics summary{font-family:var(--serif);font-size:25px;padding-top:0}.lyrics p{font-size:13px;line-height:1.95;padding-bottom:0}.lyrics>div{padding:15px 0 15px}.book{text-align:center;max-width:850px}.book p{max-width:580px;font-size:13px;margin:0 auto 25px}.book .button{margin:8px}.book small{display:block;font-size:10px;margin-top:12px}.closing{background:var(--maroon);color:var(--blush);padding:70px 25px;text-align:center}.closing p{font-size:9px;letter-spacing:3px;color:var(--gold)}.closing h2{font-family:var(--script);font-weight:400;font-size:clamp(43px,6vw,70px);line-height:1.4;margin-bottom:30px}.closing small{font-size:9px;letter-spacing:1.2px}.back-top{position:fixed;bottom:20px;right:20px;background:var(--blush);border:1px solid var(--gold);color:var(--maroon);width:40px;height:40px;display:grid;place-items:center;text-decoration:none;z-index:15}.print-button{border:0;border-bottom:1px solid var(--maroon);background:none;font:inherit;font-size:11px;color:var(--maroon);cursor:pointer;margin-left:20px}.logo-fallback{font:600 20px var(--serif);color:var(--gold);margin:10px auto 22px;letter-spacing:4px}.menu[aria-expanded=true]{background:var(--maroon);color:var(--blush)}
+@media(min-width:1600px){.hero{min-height:900px}}@media(max-width:1000px){nav{gap:15px}nav a{font-size:9px;letter-spacing:.5px}.intro{gap:40px}.committee-grid{gap:35px}.schedule{gap:35px}.hero{min-height:790px}.song .wrap{gap:40px}}@media(max-width:760px){header{height:68px;padding:0 20px}.brand strong{font-size:17px}.brand img{width:35px;height:35px}.brand small{font-size:7px}.menu{display:block}nav{display:none;position:absolute;top:68px;left:0;right:0;background:var(--blush);padding:20px;box-shadow:0 15px 20px #4A0E1715;flex-wrap:wrap;gap:12px 24px}nav.open{display:flex}nav a{font-size:10px}.hero{min-height:780px;padding:55px 26px 40px}.frame{inset:12px}.school-logo{width:73px;height:73px}.hero .eyebrow{font-size:8px;letter-spacing:1.7px}.hero h1{margin-top:23px}.calligraphy{font-size:clamp(58px,12vw,90px);line-height:1.4}.year-six{font-size:35px}.subtitle{font-size:25px}.connector{margin-top:15px;font-size:17px}.year{margin:13px 0 18px}.event-meta{display:block;font-size:10px}.event-meta span{display:block}.event-meta span+span{border:0;padding:5px 0 0}.slogan{font-size:20px}.tagline{font-size:10px}.hero-foot{font-size:7px;letter-spacing:1.7px}.wrap{padding:60px 24px}.intro,.schedule,.committee-grid,.song .wrap{grid-template-columns:1fr;gap:28px}.section-head{display:block}.section-head>p{margin-top:18px}.groups{grid-template-columns:repeat(2,1fr);gap:24px 0}.group:nth-child(2n){border:0}.group:last-child{grid-column:1/-1}.group strong{font-size:43px}.timeline article{grid-template-columns:76px 1fr;gap:10px}.timeline h3{font-size:20px}.timeline time{font-size:10px}.award-list{grid-template-columns:1fr}.award-list article,.award-list article+article{padding:20px 0;border-left:0}.award-list h3{font-size:25px}.awards h2{font-size:32px}.committee-grid{gap:40px}.song .wrap{gap:35px}.lyrics summary{padding-top:10px}.closing{padding:55px 20px}.closing p{font-size:8px;letter-spacing:1.6px}.print-button{margin:18px 0}.book .button{display:flex}.back-top{width:34px;height:34px;bottom:12px;right:12px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{header,.back-top,.menu,.button,.print-button,iframe,.song-link{display:none!important}body{background:white;color:#4A0E17;font-size:10pt}.hero{min-height:0;padding:30px 15px;color:#4A0E17;background:none}.hero .calligraphy{color:#4A0E17;font-size:54pt}.hero:before,.hero:after,.frame{display:none}.hero .year-six{font-size:28pt}.subtitle{font-size:20pt}.wrap{padding:25px 10px}.intro,.schedule,.committee-grid,.song .wrap{display:block}.section-head{display:block}h2{font-size:24pt}h3{font-size:15pt}.awards,.closing{color:#4A0E17;background:none}.groups{grid-template-columns:repeat(5,1fr)}details>*,details>div{display:block!important}summary:after{display:none}.committee-list{columns:2}.committee-list details{break-inside:avoid}.committee-list ul{padding-left:0}.song,.book{break-before:page}.closing{padding:25px}.timeline article{break-inside:avoid}a{text-decoration:none}.book small{display:none}}
+
+
+/* Typography and readable event information */
+body{font-size:18px}nav{gap:19px}nav a{font-size:12px;letter-spacing:.4px;text-transform:none}.eyebrow,.section-number{font-size:12px}.intro-copy p{font-size:17px}.section-head>p,.schedule>div>p,.song p,.book p{font-size:16px!important}summary,details p,details ol{font-size:16px}.hero{padding-top:55px;padding-bottom:50px}.year{font-family:var(--serif);font-style:italic;font-size:55px;font-weight:600;letter-spacing:5px;line-height:1.1;margin:22px 0;color:var(--gold)}.slogan{font-family:var(--serif);font-size:clamp(23px,2.8vw,34px);font-style:normal;font-weight:500;letter-spacing:3px;line-height:1.5;text-transform:uppercase}.slogan span{display:block}.tagline{font-family:var(--script);font-size:clamp(29px,3.8vw,44px);font-weight:400;letter-spacing:.2px;line-height:1.5;margin:12px 0 30px}.event-meta{display:grid;grid-template-columns:1fr 1fr;max-width:750px;margin:0 auto 30px;border-top:1px solid #C59B2770;border-bottom:1px solid #C59B2770;padding:22px 0;gap:0}.event-meta>div{padding:0 25px}.event-meta>div+div{border-left:1px solid #C59B2770}.event-meta small{display:block;font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:7px}.event-meta strong{display:block;font-family:var(--serif);font-size:26px;line-height:1.35;font-weight:600}.event-meta span{display:block;font-size:16px;margin-top:5px}.event-meta span+span{border:0;padding:0}.button{font-size:13px}.group span{font-size:14px}.timeline time{font-size:14px}.timeline p,.sessions{font-size:16px}.timeline article{grid-template-columns:110px 1fr}.special-awards{margin-top:16px;padding:14px 18px;border-left:2px solid var(--gold);background:#C59B270A}.special-awards h4{font:600 15px var(--sans);margin:0 0 8px}.special-awards ul{margin:0;padding-left:20px;font-size:14px;line-height:1.8}.induk{font-size:15px}.committee-list summary,.committee-list ul{font-size:15px}.committee-list summary .num{font-size:12px}.lyrics p{font-size:16px}.song-link{font-size:14px}.rosters{margin-top:35px;border-top:1px solid #C59B2780}.rosters summary{font-family:var(--serif);font-size:25px}.rosters summary small{display:block;font:400 13px var(--sans);margin-top:5px}.student-names{padding:0 0 20px 30px!important}.student-names li{padding:12px 0 12px 7px;border-bottom:1px solid #4A0E1718;line-height:1.6;font-size:15px}.student-names li small{display:inline-block;margin-left:12px;padding:1px 7px;border:1px solid #C59B2770;font-size:12px}.rosters details>p{padding:15px 0;font-size:15px}.print-book,.book-tools{display:none}.book-view header,.book-view main,.book-view footer,.book-view .back-top{display:none}.book-view .print-book{display:block}.book-view .book-tools{display:flex;position:sticky;top:0;z-index:30;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;background:var(--blush);border-bottom:1px solid var(--gold);padding:12px}.book-tools button,.book-tools label{font:600 13px var(--sans);border:1px solid var(--maroon);background:var(--blush);color:var(--maroon);padding:9px 15px;cursor:pointer}.book-tools input{max-width:240px;font:12px var(--sans)}.print-book{counter-reset:bookpage;background:#4A0E1710;padding:22px}.print-sheet{counter-increment:bookpage;position:relative;width:210mm;min-height:297mm;margin:0 auto 24px;padding:18mm;background:var(--blush);box-shadow:0 5px 20px #4A0E1720;box-sizing:border-box;font:12pt/1.6 var(--sans);color:var(--maroon)}.print-sheet:after{content:counter(bookpage);position:absolute;bottom:8mm;right:18mm;font:10pt var(--sans);color:var(--maroon)}.print-sheet h2{font-size:30pt;margin:0 0 8mm}.print-sheet h3{font-size:19pt}.print-sheet .section-number{font-size:10pt;margin-bottom:8mm}.print-cover{background:var(--maroon);color:var(--blush);text-align:center;min-height:297mm;padding:10mm 14mm 12mm}.print-cover:before{content:'';position:absolute;inset:7mm;border:1px solid var(--gold);pointer-events:none}.print-cover:after{color:var(--gold)}.print-cover .school-logo{width:27mm;height:27mm;object-fit:contain;border:1px solid var(--gold);border-radius:50%;padding:1mm;margin:0 auto 5mm}.print-cover .eyebrow{font-size:10pt;letter-spacing:1.7px;color:var(--gold)}.print-cover h1{font-weight:400;margin:7mm 0 4mm}.print-cover .calligraphy{font-size:52pt;line-height:1.2}.print-cover .year-six{font-size:29pt}.print-cover .connector{font-size:16pt;margin:3mm 0}.print-cover .subtitle{font-size:24pt;line-height:1.3}.print-cover .year{font-size:37pt;margin:5mm 0}.print-cover .slogan{font-size:18pt;letter-spacing:2px;line-height:1.5}.print-cover .tagline{font-size:26pt;margin:3mm 0 6mm}.print-cover .event-meta{padding:5mm 0;margin-bottom:6mm}.print-cover .event-meta strong{font-size:19pt}.print-cover .event-meta span{font-size:13pt}.print-cover .event-meta small{font-size:8pt}.cover-bottom{display:flex;align-items:center;justify-content:space-between;text-align:left;gap:8mm;margin:3mm 5mm 0}.cover-bottom p{font-size:9pt;letter-spacing:1.5px;color:var(--gold);max-width:82mm;margin:0}.qr-slot{width:31mm;height:31mm;flex-shrink:0;border:1px dashed var(--gold);display:grid;place-items:center;padding:2mm;color:var(--gold);font:9pt/1.4 var(--sans);text-align:center;background:var(--blush)}.qr-slot span{color:var(--maroon)}.qr-slot img{width:100%;height:100%;object-fit:contain}.print-sheet .induk{font-size:12pt;line-height:1.6}.print-sheet .induk td,.print-sheet .induk th{padding:3mm 2mm 3mm 0}.print-sheet p{font-size:12pt;margin-bottom:4mm}.print-sheet .timeline article{grid-template-columns:28mm 1fr;padding:3mm 0;gap:4mm}.print-sheet .timeline time{font-size:13pt}.print-sheet .timeline .timeline-head time{font-size:15pt!important}.print-sheet .timeline .timeline-head h3{font-size:19pt!important}.print-sheet .timeline h3{font-size:19pt}.print-sheet .timeline p,.print-sheet .sessions{font-size:13pt;line-height:1.45}.print-sheet .sessions li{padding-bottom:1mm}.print-sheet .special-awards{padding:3mm 4mm;margin-top:3mm}.print-sheet .special-awards h4,.print-sheet .special-awards ul{font-size:11pt;line-height:1.45}.print-committee{display:grid;grid-template-columns:1fr 1fr;column-gap:10mm;row-gap:5mm}.print-committee article{break-inside:avoid}.print-committee h3{font-size:14pt;margin:0 0 2mm}.print-committee ul{font-size:11pt;line-height:1.6;margin:0;padding-left:4mm}.print-lyrics{display:grid;grid-template-columns:1fr 1fr;gap:5mm 10mm}.print-lyrics p{font-size:13pt;line-height:1.75;margin:0}.print-lyrics strong{font-size:11pt;color:var(--maroon)}.print-sheet .print-closing{font-family:var(--script);font-size:30pt;text-align:center;margin-top:4mm;margin-bottom:0;line-height:1.4}.print-note{font-size:10pt!important;margin-bottom:6mm!important}
+@media(max-width:760px){nav a{font-size:14px}.hero{padding:40px 24px}.year{font-size:47px}.slogan{font-size:22px;letter-spacing:1.8px}.tagline{font-size:31px}.event-meta{grid-template-columns:1fr;padding:18px 0}.event-meta>div{padding:0 8px}.event-meta>div+div{border:0;margin-top:18px}.event-meta strong{font-size:24px}.event-meta span{font-size:16px}.timeline article{grid-template-columns:85px 1fr}.timeline time{font-size:12px}.timeline p,.sessions{font-size:15px}.group span{font-size:13px}.committee-list summary,.committee-list ul{font-size:15px}.print-book{padding:10px;overflow:auto}.book-tools{position:relative!important}.print-sheet{margin-left:0}}
+@page{size:A4 portrait;margin:0}@media print{body{background:var(--blush)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}header,main,footer,.back-top,.book-tools{display:none!important}.print-book{display:block!important;padding:0;background:none}.print-sheet{box-shadow:none;margin:0;width:210mm;height:297mm;min-height:297mm;break-after:page;overflow:hidden}.print-sheet:last-child{break-after:auto}.print-cover{background:var(--maroon)!important;color:var(--blush)!important}.print-cover .calligraphy{color:var(--blush)!important}.print-cover .event-meta{display:grid!important}.print-sheet .timeline article{display:grid}.print-sheet .induk{display:table}.print-sheet .print-lyrics{display:grid}.print-sheet h2{font-size:30pt}.print-sheet h3{font-size:19pt}.print-committee h3{font-size:14pt}.qr-slot img{display:block}}
+
+.print-lyrics p{margin-bottom:4mm;line-height:1.5}.print-logo-circle{width:29mm;height:29mm;overflow:hidden;border-radius:50%;border:1px solid var(--gold);margin:0 auto 5mm;position:relative}.print-cover .print-logo-circle .school-logo{position:absolute;width:42mm;height:42mm;max-width:none;border:0;padding:0;left:50%;top:50%;transform:translate(-50%,-50%);margin:0}.print-cover .ornament{margin:3mm auto}.print-cover .year{margin:3mm 0}.print-sheet:nth-child(3){padding-top:12mm;padding-bottom:12mm}.print-sheet:nth-child(3) h2{margin-bottom:4mm}.print-sheet:nth-child(3) .section-number{margin-bottom:4mm}
+/* Song: 40/60 flex layout; widths share the available space after the gap. */
+.song .wrap{display:flex;align-items:flex-start;gap:32px}.song .song-player{flex:0 0 calc(40% - 12.8px);min-width:0;background:#F9ECEE;border:2px solid #D4AF37;padding:28px;box-sizing:border-box}.song .lyrics{flex:0 0 calc(60% - 19.2px);min-width:0;width:auto;border-top:1px solid #D4AF37;border-bottom:1px solid #D4AF37;padding:25px 28px;background:#F9ECEE}.song-player h2{font-size:clamp(28px,3vw,38px);overflow-wrap:break-word}.song-player .section-number{font-size:11px;letter-spacing:1.5px}.song-player iframe{display:block;width:100%;max-width:100%;height:152px;border:1px solid #D4AF37;margin:22px 0 18px;background:#F9ECEE}.song .lyrics summary{font-size:28px;padding:0 0 15px}.song .lyrics p{font-size:17px;line-height:1.9;overflow-wrap:anywhere}.song .lyrics>div{padding-bottom:0}.student-names li span{overflow-wrap:anywhere}
+@media(max-width:760px){.song .wrap{flex-direction:column;gap:25px}.song .song-player,.song .lyrics{flex:none;width:100%;min-width:0;padding:24px 20px}.song-player h2{font-size:32px}.song .lyrics p{font-size:16px}}
+
+
+/* Requested refinements only: visible uppercase navigation, clear capital A, logo. */
+.capital-a{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;font-size:1.0em;letter-spacing:-.035em}.menu-label{display:none}header{height:auto;min-height:78px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}header nav{display:flex!important;position:static!important;flex-wrap:wrap;justify-content:flex-end;box-shadow:none;gap:8px 18px;padding:0;background:transparent}header nav a{text-transform:uppercase;font-size:12px;font-weight:700;letter-spacing:.6px}.hero .school-logo{width:110px;height:110px;border:1px solid var(--gold);border-radius:50%;padding:0;object-fit:contain}.song-player iframe{border:0;background:transparent;border-radius:0;margin:20px 0 14px;width:100%;height:152px;display:block}.song-link{display:inline-block;padding:8px 0;min-height:44px}
+@media(max-width:1100px){header{justify-content:center;gap:12px}.brand{margin-right:auto}header nav{width:100%;justify-content:center!important;padding-top:10px;gap:8px 20px}html{scroll-padding-top:155px}.menu-label{display:block;font-size:11px;letter-spacing:2px;font-weight:700}}
+@media(max-width:760px){header{padding:10px 18px;gap:10px}.brand strong{font-size:16px}header nav{display:flex!important;position:static!important;gap:7px 16px;padding:9px 0 0}header nav a{font-size:11px;letter-spacing:.35px;padding:4px 0}.hero .school-logo{width:100px;height:100px}.song-player iframe{width:100%;height:152px}html{scroll-padding-top:175px}}
+@media print{header{display:none!important}}
+
+</style></head>
+
+<body>
+
+<div id="skrin-pembukaan">
+    <div class="kad-jemputan">
+        <p class="nama-sekolah">SK Taman Skudai Baru</p>
+        <img src="logo sekolah.png" alt="Logo SK Taman Skudai Baru" class="logo-pembukaan">
+        <h1>Majlis <span class="capital-a">A</span>presiasi <span class="kilau-2026">2026</span></h1>
+        <p class="info-majlis">18 November 2026 &bull; Dewan Bestari</p>
+        <button id="butang-buka-program" type="button">Buka Buku Program ✨</button>
+    </div>
+</div>
+
+<canvas id="skrin-bunga-api"></canvas>
+
+<canvas id="skrin-confetti" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:10001;"></canvas>
+
+<header><a class="brand" href="#utama"><img src="logo sekolah.png" alt="Logo SK Taman Skudai Baru"><span><strong>SK Taman Skudai Baru</strong><small>APRESIASI · 2026</small></span></a><span class="menu-label">MENU</span><nav id="navigation" aria-label="Menu utama"><a href="#utama">UTAMA</a><a href="#pengenalan">PENGENALAN</a><a href="#murid">YANG DIRAIKAN</a><a href="#tentatif">ATUR CARA MAJLIS</a><a href="#ajk">JAWATANKUASA</a><a href="#lagu">LAGU KENANGAN</a><a href="#buku">CETAK</a></nav></header>
+<main>
+
+<section class="hero" id="utama"><div class="frame"></div><div class="hero-inner">
+
+<img class="school-logo" src="logo sekolah.png" alt="Logo Sekolah Kebangsaan Taman Skudai Baru" style="height: clamp(85px, 12vw, 130px) !important; width: auto !important; max-width: none !important; max-height: none !important; margin-bottom: 16px;" onerror="this.hidden=true;document.querySelector('.logo-fallback').hidden=false">
+<div class="logo-fallback" hidden>SKTSB</div><p class="eyebrow">Sekolah Kebangsaan Taman Skudai Baru</p><h1><span class="calligraphy">Majlis <span class="capital-a">A</span>presiasi</span><span class="year-six">Murid Tahun 6</span></h1><span class="connector">dan</span><p class="subtitle">Jamuan Akhir Tahun<br>Badan Kepimpinan Sekolah</p><p class="year"><span class="kilau-2026">2026</span></p><div class="ornament" aria-hidden="true">✦</div><p class="slogan" style="font-family: 'Plus Jakarta Sans', sans-serif !important; font-style: normal !important; font-size: clamp(13px, 1.5vw, 15px) !important; font-weight: 400 !important; letter-spacing: 0.5px !important; margin-bottom: 4px !important;"><span><em>Seindah Impian,</em></span> <span><em>Segemilang Harapan</em></span></p><p class="tagline" style="font-family: 'Plus Jakarta Sans', sans-serif !important; font-style: normal !important; font-size: clamp(13px, 1.5vw, 15px) !important; font-weight: 400 !important; letter-spacing: 0.5px !important;"><em>Satu Perjalanan, Seribu Kenangan.</em></p><div class="event-meta"><div><small>TARIKH & HARI</small><strong>18 November 2026</strong><span>Rabu</span></div><div><small>LOKASI MAJLIS</small><strong>Dewan Bestari</strong><span>SK Taman Skudai Baru</span></div></div><a class="button" href="#tentatif">ATUR CARA MAJLIS <span aria-hidden="true">↗</span></a><p class="hero-foot">ANJURAN UNIT HAL EHWAL MURID SKUBA</p></div></section>
+<section class="wrap intro" id="pengenalan"><div><p class="section-number">01 / SEBUAH PENGHARGAAN</p><h2>Menyulam usaha,<br>melakar<br><em>cerita.</em></h2></div><div class="intro-copy"><p>Setiap usaha ada nilainya; setiap perjalanan menyimpan cerita. Majlis ini meraikan murid Tahun 6 yang bakal melangkah ke alam persekolahan menengah, di samping mengiktiraf kegigihan, disiplin, penglibatan serta pencapaian mereka sepanjang berada di sekolah rendah.</p><p>Setinggi-tinggi penghargaan turut dizahirkan kepada barisan Pengawas Sekolah, Pengawas Pusat Sumber dan Pembimbing Rakan Sebaya atas khidmat bakti, komitmen serta amanah yang telah digalas sebagai pemimpin muda sekolah.</p><details><summary>Objektif program</summary><ol><li>Menghargai perjalanan pendidikan dan pengalaman di sekolah rendah.</li><li>Meningkatkan keyakinan diri melalui penglibatan dalam majlis formal.</li><li>Menghayati nilai penghargaan, persahabatan dan kenangan bersama warga sekolah.</li><li>Menghargai tanggungjawab dan amanah sebagai pemimpin muda.</li><li>Memupuk disiplin, kerjasama, kepimpinan dan tanggungjawab.</li><li>Mengeratkan hubungan antara murid dengan guru.</li><li>Memberi motivasi untuk menghadapi alam persekolahan seterusnya.</li><li>Mengiktiraf sumbangan Badan Kepimpinan Sekolah.</li></ol></details></div></section>
+<section class="participants" id="murid"><div class="wrap"><p class="section-number">02 / WARGA YANG DIRAIKAN</p><div class="section-head"><h2>Langkah diraikan,<br><em>Sumbangan dihargai.</em></h2><p>Majlis menghimpunkan 164 penyertaan murid bersama barisan guru SKTSB.</p></div><div class="groups"><div class="group"><strong>38</strong><span>6 Intelligent</span></div><div class="group"><strong>38</strong><span>6 Excellent</span></div><div class="group"><strong>37</strong><span>Pengawas Sekolah</span></div><div class="group"><strong>36</strong><span>Pengawas Pusat Sumber</span></div><div class="group"><strong>15</strong><span>Pembimbing Rakan Sebaya</span></div></div><div class="rosters">
+
+
+<details id="names-6e"><summary><span>6 Excellent <small>Senarai nama</small></span></summary><ol class="student-names"><li><span>ADAM ADLI MIKHAIL BIN ABDUR RAHMAN</span><small>6E</small></li><li><span>ADIB MIKAIL BIN MOHD SAYUTI</span><small>6E</small></li><li><span>ADNI HUMAIRA BINTI JA&#x27;AFAR</span><small>6E</small></li><li><span>AHMAD RAZIFWANA BIN AHMAD FAZREEWANA</span><small>6E</small></li><li><span>AMMAR RAYYAN HAZIQ BIN ABDUL MUHAIMIN</span><small>6E</small></li><li><span>AMMAR ZAIM BIN AZUANUL HISHAM</span><small>6E</small></li><li><span>ARRIANA AMIRA BINTI MOHD HAFIZZAN</span><small>6E</small></li><li><span>HELLEN HASINI A/P SIVA KUMAR</span><small>6E</small></li><li><span>HERENYA A/P THAMILARASU</span><small>6E</small></li><li><span>HIDAYATUS SOLEHAH BINTI MOHAMED REDZUAN</span><small>6E</small></li><li><span>ISHANA DEVI A/P SELVARAJ</span><small>6E</small></li><li><span>MARIATUL QIBTIAH BINTI MOHD SYAFIQ</span><small>6E</small></li><li><span>MUHAMMAD AKMAL UMAR BIN ABDUL MUHAIMIN</span><small>6E</small></li><li><span>MUHAMMAD AMMAR BIN MOHAMMAD AFIK</span><small>6E</small></li><li><span>MUHAMMAD FARIS BIN HAIRUL ANUAR</span><small>6E</small></li><li><span>MUHAMMAD KHAIREL NAZMI BIN ABDULLAH</span><small>6E</small></li><li><span>MUHAMMAD RAZIQ BIN AZIMAN</span><small>6E</small></li><li><span>MUHAMMAD WAFI IMAN BIN ABDUL MU&#x27;IZ</span><small>6E</small></li><li><span>NAESHA ANNABELLE NG JAMES RAJ</span><small>6E</small></li><li><span>NAIM RIZQI BIN OTHMAN</span><small>6E</small></li><li><span>NAVESSHAN A/L MURALE</span><small>6E</small></li><li><span>NUR ARIANI BINTI HILMI</span><small>6E</small></li><li><span>NUR BATRISYA BINTI MOHD FAIRUS</span><small>6E</small></li><li><span>NUR HIDAYAH BINTI IBRAHIM</span><small>6E</small></li><li><span>NUR MARJAANAH BINTI MAZLAN</span><small>6E</small></li><li><span>NUR QHARISHA UMAIRAH BINTI MOHD IZZAUDIN</span><small>6E</small></li><li><span>NURUL IMAN AWLIYA BINTI ANUAR</span><small>6E</small></li><li><span>PUTERI NUR JANNAH BINTI AHMAD FAIZAL</span><small>6E</small></li><li><span>PUTRI NUR SHAAFIYA BINTI RAMANAH</span><small>6E</small></li><li><span>QAISER IMAN BIN FALAH AZZAD FATWA</span><small>6E</small></li><li><span>RAFAEL ANDREAS ANAK JULIUS</span><small>6E</small></li><li><span>SITI NOR ZAHRA BINTI ZUBIR</span><small>6E</small></li><li><span>SYED MUKHRIZ BIN SYED THAHA</span><small>6E</small></li><li><span>THEOPHILUS SHAWN GOMEZ</span><small>6E</small></li><li><span>VENNELLA MYEA ANAK DIAN</span><small>6E</small></li><li><span>VESHANTHINI A/P KARTIGAI</span><small>6E</small></li><li><span>NUR SOFAA HAMRAA BINTI MD.ISMAIL</span><small>6E</small></li><li><span>MIRUTHUBASHINI</span><small>6E</small></li></ol></details>
+
+<details>
+  <summary><span>6 Intelligent<small>Senarai nama</small></span></summary>
+  <ol class="student-names">
+    <li><span>AHMAD HAFIZZUDIN BIN AWALLUDIN</span><small>6I</small></li>
+    <li><span>AHMAD NUR AIMAN BIN MUHAMMAD SYUKRI</span><small>6I</small></li>
+    <li><span>ANGELIN ANGEL ANAK KEKIN</span><small>6I</small></li>
+    <li><span>ARABELLA AMANDA SABRI</span><small>6I</small></li>
+    <li><span>ARISHA MIA IZARA BINTI MOHAMMAD RIDZWAN</span><small>6I</small></li>
+    <li><span>ARUMUGAM A/L MANAR</span><small>6I</small></li>
+    <li><span>BRENDEN BUGEK ANAK RINA</span><small>6I</small></li>
+    <li><span>DANIA SAFURA BINTI ABDULLAH</span><small>6I</small></li>
+    <li><span>DURGAYINI A/P SURESH KUMAR</span><small>6I</small></li>
+    <li><span>FAWWAZ SYABIL BIN MUHAMMAD KASSIM</span><small>6I</small></li>
+    <li><span>HANA NADHIRA BINTI MUHAMAD RASUL</span><small>6I</small></li>
+    <li><span>MAHGADEVI A/P THENNARASU</span><small>6I</small></li>
+    <li><span>MATHAN A/L RAGUNATHAN</span><small>6I</small></li>
+    <li><span>MIKAIL ADHA BIN MAZLAN</span><small>6I</small></li>
+    <li><span>MIMI DAYANA BINTI MOHAMAD AMIRUL ASHRAF</span><small>6I</small></li>
+    <li><span>MUHAMMAD AIMAN HAMIZAN BIN HAIROSNIZAN</span><small>6I</small></li>
+    <li><span>MUHAMMAD MUKHTAR BIN DAHARI</span><small>6I</small></li>
+    <li><span>MUHAMMAD SHAMSUZZAMAN FIERDAUS BIN SHAMSUL ARIFIN</span><small>6I</small></li>
+    <li><span>NETESH A/L NANTHAKUMAR</span><small>6I</small></li>
+    <li><span>NUR ADELINA SOFEA BINTI MOHAMMAD MIRZA</span><small>6I</small></li>
+    <li><span>NUR ARIANA YASMIN BINTI AZHAR</span><small>6I</small></li>
+    <li><span>NUR ERYNA AFRINA BINTI MUHAMAD ROSLI</span><small>6I</small></li>
+    <li><span>NUR IRLIYANA</span><small>6I</small></li>
+    <li><span>NUR MAISARAH BINTI MOHAMAD</span><small>6I</small></li>
+    <li><span>NUR QAIRINA NAURAH BINTI MOHAMMAD AKRAMIN</span><small>6I</small></li>
+    <li><span>NUR RANIA ARISYA BINTI RAMIZAN</span><small>6I</small></li>
+    <li><span>NUR SOFAA HAMRAA BINTI MD.ISMAIL</span><small>6I</small></li>
+    <li><span>NURUL HUMAIRA BINTI ANIZAR</span><small>6I</small></li>
+    <li><span>NURUL SUHADA BINTI BAHARUDIN</span><small>6I</small></li>
+    <li><span>PRIVESH A/L GOBI</span><small>6I</small></li>
+    <li><span>QURRATUL AISYAH BINTI MOHAMMAD HAIREE</span><small>6I</small></li>
+    <li><span>SAFIRAH INSYIRAH BINTI AZHAR</span><small>6I</small></li>
+    <li><span>SHOBAN A/L KALY ARASU</span><small>6I</small></li>
+    <li><span>SYAKIRA HUMAIRA BINTI SAHRUL SAH</span><small>6I</small></li>
+    <li><span>TARMIMI AWEERA BIN MOHD FAIZAL</span><small>6I</small></li>
+    <li><span>YULIYA ELENA BINTI AZRUL AMINURASYID</span><small>6I</small></li>
+    <li><span>ZIDAN ZULFIKAR AIDIL BIN MUHAMMAD AIDIL</span><small>6I</small></li>
+    <li><span>ZUYYIN ADHA LUTHIYA BINTI NORAHMAN</span><small>6I</small></li>
+  </ol>
+</details>
+
+<details>
+  <summary><span>Pengawas Sekolah <small>Senarai nama</small></span></summary>
+  <ol class="student-names">
+    <li><span>QURRATU’ILMA BINTI MOHAMAD HAIREE</span><small>5E</small></li>
+    <li><span>NUR AUNI FATINI BINTI SYAHRIZAN</span><small>5E</small></li>
+    <li><span>SAI ROHAAN A/L MAGESWARAN</span><small>5I</small></li>
+    <li><span>RAUDHAH BINTI MOHAMAD NAIM</span><small>5I</small></li>
+    <li><span>YUVINRAJ A/L SELVARAJ</span><small>5I</small></li>
+    <li><span>IMAN KHALISH BIN MUHD AFFZAN</span><small>5D</small></li>
+    <li><span>MUHAMMAD AISY MIKAIL BIN MUHAMMAD IZZUDDIN</span><small>5D</small></li>
+    <li><span>MUHAMMAD FARIS BIN MOHD NOR FADLI</span><small>5I</small></li>
+    <li><span>MUHAMMAD ADAM HARITH BIN ABDUL HAKIM</span><small>5E</small></li>
+    <li><span>NURUL HAURA BINTI ABDULLAH</span><small>5D</small></li>
+    <li><span>NURUL IZZUL ISLAM BINTI HAFSHAM</span><small>5E</small></li>
+    <li><span>MOHAMAD FARID BIN MOHAMAD FARUQ</span><small>4I</small></li>
+    <li><span>NUR ADELIA ERYNA BINTI MOHD AZIZI RAZI</span><small>4I</small></li>
+    <li><span>KAAVYAA SRI A/P SARAVANAN</span><small>4E</small></li>
+    <li><span>THUWAIBAH MOHD SYAFIQ</span><small>4E</small></li>
+    <li><span>ADAM SYAKIR BIN SAHRUL SAH</span><small>4E</small></li>
+    <li><span>NUR ADELIA QISYA BINTI MOHAMAD AMIN</span><small>4I</small></li>
+    <li><span>MUHAMMAD AQIL FAHMI BIN MOHAMAD BURHAM</span><small>4I</small></li>
+    <li><span>MARYAM ZAHRA BINTI MUHAMAD AMIR HAFIZ</span><small>4I</small></li>
+    <li><span>NAVISHAA A/P BASKARAN</span><small>4E</small></li>
+    <li><span>PUTERI SYIFAA NUR EMAN BINTI ABDUL QAWI</span><small>4E</small></li>
+    <li><span>MUHAMMAD DANIYAL MIKAIL BIN MOHD NUR RAHMAT</span><small>4E</small></li>
+    <li><span>DHARIS SYAHMI BIN SYAHDIZAM</span><small>3I</small></li>
+    <li><span>MUHAMMAD KHALISH ZIQRI BIN MOHAMMAD SYAFIQ</span><small>3I</small></li>
+    <li><span>PUTRA IZZ DHAIFULLAH BIN SURATMI</span><small>3I</small></li>
+    <li><span>NUR ALIYA AMNI BINTI MOHD NIZAMUDDIN</span><small>3I</small></li>
+    <li><span>MUHAMMAD YUSSOF BIN MOHAMMAD AFIK</span><small>3I</small></li>
+    <li><span>NURUL NAFEESA BINTI MOHD NAZAM</span><small>3I</small></li>
+    <li><span>NUR HANIS AINA BINTI SAGAP</span><small>3I</small></li>
+    <li><span>NOR AISH HAMEEDA</span><small>3I</small></li>
+    <li><span>DEEKSSITASAI A/P MAGESWARAN</span><small>3I</small></li>
+    <li><span>MUHAMMAD FAYYADH BIN MUHAMMAD SHAHRIL</span><small>3E</small></li>
+    <li><span>MUHAMMAD UMAR ZAFRI BIN MOHD RIZAL</span><small>3E</small></li>
+    <li><span>AAYDEN KRISH RAO A/L CELESTINE NARSIMHA RAO</span><small>3E</small></li>
+    <li><span>ANASTASHA ALESHA SABRI</span><small>3E</small></li>
+    <li><span>MUHAMMAD FIRDAUS BIN MOHD ZAKI</span><small>3E</small></li>
+    <li><span>MUHAMMAD SAIF RIFQI BIN ABDULLAH</span><small>3E</small></li>
+  </ol>
+</details>
+
+
+
+<details id="names-pss"><summary><span>Pengawas Pusat Sumber <small>Senarai nama</small></span></summary><ol class="student-names"><li><span>ARIANA HASSYA DARWISYA BINTI MOHAMAD FAIZOL</span><small>5I</small></li><li><span>MOHAMAD TAUFIQ BIN MOHAMAD JEFFERY</span><small>5I</small></li><li><span>MUHAMMAD AQIL ISYRAF BIN MOHD KHAIRUL ANUAR</span><small>5I</small></li><li><span>AMNI NA’IFAH BINTI SUHAIRI</span><small>5I</small></li><li><span>AHMAD WAFI BIN MOHAMMAD NAQIB IHSAN</span><small>5E</small></li><li><span>MUHAMMAD ALFIZAN REZQI BIN ALPAIZAR</span><small>5E</small></li><li><span>DINDA AULIA BINTI ABDUL JALIL</span><small>5E</small></li><li><span>SOFEA HANA BINTI MOHD FAEZEE</span><small>5E</small></li><li><span>MUHAMMAD AQIL BIN MOHD NORAZLAN</span><small>5D</small></li><li><span>HAIKAL SUFYAN BIN SAIFOL HELMI</span><small>5D</small></li><li><span>MUHAMMAD DINIE QOYYUM BIN MOHAMAD ADZMEE</span><small>5I</small></li><li><span>NUR ARISSA SOFIA BINTI MOHD FAIRUZ</span><small>5D</small></li><li><span>NUR AZI AMIRAH BINTI RAZALI</span><small>5D</small></li><li><span>MOHAMAD ALEEF RAYQARL BIN ABDUL QAYYUM</span><small>5D</small></li><li><span>NUR ANIS AMANY BINTI NAZRI</span><small>4I</small></li><li><span>MUHAMMAD IMAN NAUFAL BIN MUHAMMAD SYAHRULNIZAM</span><small>4I</small></li><li><span>MUHAMMAD NAUFAL ZIQRI BIN MOHAMAD NUR NAJMI</span><small>4I</small></li><li><span>PUTERI AISYAH RAMADHANI BINTI MARDI</span><small>4I</small></li><li><span>QALESYA TASNIM BINTI SYAMSUDDIN</span><small>4I</small></li><li><span>AHMAD RAJAIE BIN AHMAD FAZREEWANA</span><small>4E</small></li><li><span>MUHAMMAD RAFIF NAUFAL BIN RAMANAH</span><small>4E</small></li><li><span>IMAN HUMAIRAH BINTI ABDUL MU’IZ</span><small>4E</small></li><li><span>NUR FAZRINA ALFIRA BINTI MOHD FADLI</span><small>4E</small></li><li><span>RIFDATU AISYAH BINTI HISHAM</span><small>4E</small></li><li><span>NUSAIBAH BINTI MOHD SYAFIQ</span><small>4E</small></li><li><span>NUR AKMA ZAHIRAH BINTI MOHAMAD AMIN</span><small>3E</small></li><li><span>AUNI HADIRAH BINTI JA’AFAR</span><small>3E</small></li><li><span>KANISKA A/P VIJIANDYRAN</span><small>3E</small></li><li><span>MOHAMAD HARRAZ ADZREEN BIN MOHD FARHAN</span><small>3E</small></li><li><span>AUNI QADEEJA BINTI MOHD FAEZEE</span><small>3E</small></li><li><span>YULIYA KHAIRA BINTI AZRUL AMINURASYID</span><small>3E</small></li><li><span>PRIWIN A/L KALY ARASU</span><small>3I</small></li><li><span>THAQIF RIZQI BIN TAUFIQ</span><small>3E</small></li><li><span>ARRIANA ADIRA BINTI MOHD HAFIZZAN</span><small>3E</small></li><li><span>MARIANNE RUTH ANAK BELIKAU</span><small>3I</small></li><li><span>HARIS DANIAL BIN MOHD SHARUL RIZAL</span><small>3I</small></li></ol></details>
+
+
+<details>
+  <summary><span>Pembimbing Rakan Sebaya (PRS) <small>Senarai nama</small></span></summary>
+  <ol class="student-names">
+    <li><span>WAN AQIL AMSYAR BIN W KHAIRU ZAMAN</span><small>5D</small></li>
+    <li><span>NUR SAFIYYAH AZZAHRA BINTI ABDUL AZIZ</span><small>5D</small></li>
+    <li><span>DUFFY LIW</span><small>5D</small></li>
+    <li><span>NATALIE DARLENE FREDOLIN</span><small>5D</small></li>
+    <li><span>NUR HANNAH SOFEA BINTI MOHAMMAD FARIDZUL</span><small>5D</small></li>
+    <li><span>FARAH QHASEH BINTI MOHAMAD IZHAR</span><small>5I</small></li>
+    <li><span>MUHAMMAD ALLIF FARRAS BIN MUHAMMAD RAFIE JAMBAI</span><small>5I</small></li>
+    <li><span>NOOR RAISYA RANIA BINTI RAZIZI</span><small>5I</small></li>
+    <li><span>TARNISRI A/P SHOBAN</span><small>5I</small></li>
+    <li><span>WAN NUR ADELIA IRDINA BINTI ABDUL MU'IZ</span><small>5E</small></li>
+    <li><span>MUHAMMAD ANIS DANIEL BIN SAGAP</span><small>5E</small></li>
+    <li><span>LERRY MICHEALSON ANAK MARSAL</span><small>5E</small></li>
+    <li><span>CELMON MELVIN ANAK KEKIN</span><small>4I</small></li>
+    <li><span>NUR QAISARA HANANIA BINTI FALAH AZZAD FATWA</span><small>4I</small></li>
+    <li><span>MUHAMMAD KHAIRI SHAFWAN BIN MOHD KHAIRANI</span><small>4E</small></li>
+  </ol>
+</details>
+
+
+
+</div></div></section>
+<section class="wrap schedule" id="tentatif">
+  <div>
+    <p class="section-number">03 / ATUR CARA MAJLIS</p>
+    <h2>Detik yang<br><em>dinantikan.</em></h2>
+    <p style="font-size:12px">Rabu, 18 November 2026<br>Dewan Bestari</p>
+  </div>
+  <div class="timeline">
+    <!-- BARIS TAJUK JADUAL (SEJAJAR) -->
+
+    <article class="timeline-head" style="align-items: baseline; padding: 14px 0 12px; border-bottom: 3px double var(--maroon);">
+      <time style="font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--maroon); padding-top: 0; margin-top: 0;">Masa</time>
+      <h3 style="margin: 0; font-family: var(--serif); font-size: 23px; font-weight: 600; color: var(--maroon); text-decoration; text-decoration-style: double; text-decoration-color: var(--gold); text-underline-offset: 6px;">Atur Cara Majlis</h3>
+    </article>
+
+
+
+    <article>
+      <time>7.00 pagi</time>
+      <div>
+        <h3>Peserta berkumpul</h3>
+        <p>Peserta berkumpul di sekolah.</p>
+      </div>
+    </article>
+    <article>
+      <time>8.30 pagi</time>
+      <div>
+        <h3>Pembukaan majlis</h3>
+        <p>Keberangkatan masuk VIP, diikuti nyanyian Lagu Negaraku dan Lagu Bangsa Johor, bacaan doa, ucapan Yang Dipertua PIBG serta ucapan Guru Besar.</p>
+      </div>
+    </article>
+    <article>
+      <time>9.30 pagi</time>
+      <div>
+        <h3>Penyampaian sijil &amp; anugerah</h3>
+        <ol class="sessions">
+          <li><strong>Sidang 1 · Guru Besar</strong><br>Murid Tahun 6 Intelligent dan 6 Excellent.</li>
+          <li><strong>Sidang 2 · GPK 1</strong><br>Pengawas Sekolah.</li>
+          <li><strong>Sidang 3 · GPK HEM</strong><br>Pengawas Pusat Sumber Sekolah.</li>
+          <li><strong>Sidang 4 · GPK KOKO</strong><br>Pembimbing Rakan Sebaya.</li>
+          <li><strong>Sidang 5 · YDP PIBG</strong><br>Penyampaian Anugerah Khas.</li>
+        </ol>
+        <aside class="special-awards">
+          <h4>Pengiktirafan Khas</h4>
+          <ul>
+            <li>Tokoh Khidmat Bakti</li>
+            <li>Tokoh Pemimpin Kreatif</li>
+            <li>Tokoh Murid Harapan</li>
+          </ul>
+        </aside>
+      </div>
+    </article>
+    <article>
+      <time></time>
+      <div>
+        <h3>Santapan &amp; persembahan</h3>
+        <p>Jamuan, persembahan murid Tahun 6 dan sesi bergambar.</p>
+      </div>
+    </article>
+  </div>
+</section>
+<section class="wrap" id="ajk"><p class="section-number">04 / DI SEBALIK MAJLIS</p><div class="section-head"><h2><em>Barisan Jawatankuasa</em></h2><p><em>Setulus penghargaan buat semua yang berganding bahu menjayakan majlis ini.</em></p></div><div class="committee-grid"><div><h3>Jawatankuasa Induk</h3><table class="induk"><tbody><tr><th scope="row">Penasihat</th><td>Abdul Hamid bin Ismail</td></tr><tr><th scope="row">Penolong Penasihat I</th><td>Haffiza Noor binti Samad</td></tr><tr><th scope="row">Penolong Penasihat II</th><td>Fakhrurazi bin Mat</td></tr><tr><th scope="row">Penolong Penasihat III</th><td>Hamisah binti Tarmizi</td></tr><tr><th scope="row">Penyelaras Program</th><td>Nur Atikah binti Abu Samah</td></tr><tr><th scope="row">Bendahari Program</th><td>Nurul Atiah binti Salah Pikri</td></tr><tr><th scope="row">Setiausaha Program</th><td>Noryatimah binti Atan</td></tr></tbody></table></div><div><h3>Jawatankuasa Pelaksana</h3><div class="committee-list" id="committee-list"></div></div></div></section>
+<section class="song" id="lagu"><div class="wrap"><div class="song-player"><p class="section-number">05 / LAGU KENANGAN</p><h2>Seindah Impian,<br><em>Segemilang Harapan.</em></h2><p><em>🎼 Khas buat anak-anak SKUBA yang diraikan — yang bakal melangkah pergi dan yang masih lagi di sini.</em></p><p><em>Semoga memori abadi di sanubari.</em></p>
+
+<iframe title="Memori Gemilang" src="https://suno.com/embed/43de733e-7744-4f91-bb0d-7be205305c17" width="100%" height="152" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div><details class="lyrics" open><summary>Lirik lagu Memori Gemilang</summary><div><p><strong>Verse 1</strong><br>Tahun demi tahun kita bersama,<br>Menimba ilmu penuh bermakna,<br>Di SK Taman Skudai Baru tercinta,<br>Di sinilah tempat kita membina cita.<br>Cikgu dan rakan saksi perjalanan,<br>Penuh warna, tawa dan cabaran.</p><p><strong>Pre-Chorus</strong><br>Kini tiba masanya melangkah pergi,<br>Membawa semangat di dalam diri,<br>Menjunjung amanah pemimpin muda,<br>Jasamu guru kekal selamanya.</p><p><strong>Chorus</strong><br>Seindah impian, segemilang harapan,<br>Satu perjalanan, seribu kenangan,<br>Kita ukir nama di mercu kejayaan,<br>Menuju bintang menembus awan.<br>Terima kasih sekolah tercinta,<br>Semangatmu terus membara di dada!</p><p><strong>Verse 2</strong><br>Pengawas, pustakawan, pembimbing rakan sebaya,<br>Tanggungjawab dipikul penuh setia,<br>Kini majlis diraikan penuh bermakna,<br>Graduasi penutup tahun yang sempurna.</p><p><strong>Bridge</strong><br>Walau jauh kita berpisah kelak,<br>Ikatan persahabatan tidak akan retak,<br>Melangkah gagah ke sekolah menengah,<br>Membawa nama sekolah kita yang megah.</p><p><strong>Chorus</strong><br>Seindah impian, segemilang harapan,<br>Satu perjalanan, seribu kenangan,<br>Kita ukir nama di mercu kejayaan,<br>Menuju bintang menembus awan.<br>Terima kasih sekolah tercinta,<br>Semangatmu terus membara di dada!</p><p><strong>Outro</strong><br>Seindah impian...<br>Segemilang harapan...<br>Selamat tinggal Tahun Enam,<br>Tahun Enam... kami pasti rindu.</p></div></details></div></section>
+<section class="wrap book" id="buku">
+  <p class="section-number">06 / CETAK</p>
+  <h2>Fungsi <em>cetakan.</em></h2>
+  
+  <button class="button outline" type="button" id="preview-book">Buku Program / Cetak ↗</button>
+  <small>Buka buku program untuk melihat susun atur cetakan.</small>
+</section>
+</main>
+
+<footer class="closing" style="padding: 60px 20px !important; text-align: center;">
+  <h2 style="font-size: clamp(20px, 3vw, 30px) !important; line-height: 1.6 !important; margin-bottom: 16px !important;">
+    <em>
+      Daun selasih permainan budak, bunga melur berbau wangi;<br>
+      bertaut kasih bercerai tidak, panjang umur berjumpa lagi.
+    </em>
+  </h2>
+  <h2 style="font-size: clamp(20px, 4.5vw, 30px) !important; line-height: 1.2 !important; margin-bottom: 16px !important;">💝Terima kasih💝</h2>
+  <small style="font-size: clamp(11px, 1.5vw, 13px) !important; letter-spacing: 1.5px !important;">SK TAMAN SKUDAI BARU · 2026</small>
+</footer>
+
+<a class="back-top" href="#utama" aria-label="Kembali ke atas"><b>⭱</b></a>
+<div class="book-tools"><button type="button" id="back-to-site">← Kembali ke laman</button><button type="button" id="print-book-now">Cetak / Simpan PDF</button><label>Masukkan QR <input type="file" id="qr-upload" accept="image/*"></label></div><div class="print-book" id="print-book"></div><script>
+const committees=[['Penyelaras Program',['Nur Atikah Binti Abu Samah']],['Setiausaha',['Noryatimah binti Atan']],['Bendahari',['Nurul Atiah binti Salah Pikri']],['Penyelaras Majlis',['Roselin A/P Rajagumaran']],['AJK Jubah',['Nursuhailah Binti Mohamed Kassin','Zairosnyza Binti Osman','Revathi A/P Motokandar','Saufiah Binti Mohd Taib','Parimaladevi A/P Loganathan','Nursamirah Sakinah Binti Samsi']],['AJK Persiapan Dewan & Peralatan',['Joleena Binti Ramli','Nur Atikah Binti Abu Samah','Nurul Atiah Binti Salah Pikri','Muhammad Luqman Bin Ikhwandi','Nik Nor Nadiah Binti Noordin']],['AJK Buku Program / Jemputan & Tirai Latar',['Weeswee Binti Kusaini']],['AJK Hadiah & Cenderahati',['Aina Nadhirah Binti Marzuki','Noryatimah Binti Atan','Nusaibah Syahidah Binti Ibrahim','Syukriah Binti Abdullah']],['Pengacara Majlis',['Puteri Nur Alia Binti Jamaluddin','Muhammad Luqman Bin Ikhwandi']],['AJK Jamuan',['Sabariah Binti Abdullah','Mazila Binti Adnan','Norhafizah Binti Ernan','Nafisah Binti Abdullah']],['AJK Hiasan Pentas',['Suryani Binti Othman','Nur Iman Binti Faiz','Nurul Nadiah Binti Zulharimi','Kamariah Binti Sarudin','Siti Fatimah Binti Sait']],['AJK Sudut Bergambar',['Nurul Nadiah Binti Zulharimi','Suryani Binti Othman','Nur Iman Binti Faiz','Kamariah Binti Sarudin','Siti Fatimah Binti Sait']],['Bacaan Doa',['Zainul Hafizi Bin Hisamuddin']],['AJK Persembahan Tahun 6',['Alia Husna Binti Abdul Nasyer','Grace Tan Ren Hui']],['AJK Montaj & Tayangan Slaid',['Chrmini A/P Raveendren']],['AJK Dokumentasi & Gambar',['Nurdiniy Binti Suhaini']],['AJK Sistem Siar Raya',['Muhammad Izhar Bin Mahmud','Muhammad Uzair Bin Marno @ Mohd Noor']]];
+const list=document.getElementById('committee-list');committees.forEach(([title,names],i)=>{const d=document.createElement('details'),s=document.createElement('summary'),n=document.createElement('span'),label=document.createElement('span'),ul=document.createElement('ul');n.className='num';n.textContent=String(i+1).padStart(2,'0');label.className='label';label.textContent=title;s.append(n,label);names.forEach(name=>{const li=document.createElement('li');li.textContent=name;ul.append(li)});d.append(s,ul);list.append(d)});
+const nav=document.querySelector('nav');
+let openBeforePrint=[];window.addEventListener('beforeprint',()=>{openBeforePrint=[...document.querySelectorAll('details')].map(d=>d.open);document.querySelectorAll('details').forEach(d=>d.open=true)});window.addEventListener('afterprint',()=>document.querySelectorAll('details').forEach((d,i)=>d.open=openBeforePrint[i]));if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){nav.querySelectorAll('a').forEach(a=>{const active=a.hash==='#'+e.target.id;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')})}}),{rootMargin:'-15% 0px -65% 0px'});document.querySelectorAll('main>section[id]').forEach(s=>observer.observe(s))}
+
+const book=document.getElementById('print-book');
+function sheet(content,cls=''){const section=document.createElement('section');section.className='print-sheet '+cls;section.innerHTML=content;book.append(section);return section;}
+const hero=document.querySelector('.hero-inner').cloneNode(true);hero.querySelector('.button').remove();hero.querySelector('.hero-foot').remove();const emblem=hero.querySelector('.school-logo');const circle=document.createElement('div');circle.className='print-logo-circle';emblem.replaceWith(circle);circle.append(emblem);const cover=sheet(hero.innerHTML+'<div class="cover-bottom">SK TAMAN SKUDAI BARU</p><div class="qr-slot" id="qr-slot"><span>RUANG QR<br>Akses Buku Program</span></div></div>','print-cover');
+sheet('<p class="section-number">PENGENALAN & JAWATANKUASA INDUK</p><h2>Sebuah penghargaan,<br>seribu kenangan.</h2>'+document.querySelector('.intro-copy p').outerHTML+document.querySelectorAll('.intro-copy p')[1].outerHTML+'<h3 style="margin-top:8mm">Jawatankuasa Induk</h3>'+document.querySelector('.induk').outerHTML);
+sheet('<p class="section-number">RABU · 18 NOVEMBER 2026</p><h2>Atur Cara Majlis</h2><p class="print-note">Dewan Bestari, SK Taman Skudai Baru</p>'+document.querySelector('.timeline').outerHTML);
+for(let start=0;start<committees.length;start+=9){const sec=sheet('<p class="section-number">DI SEBALIK TABIR</p><h2>Jawatankuasa Pelaksana</h2><div class="print-committee"></div>');const grid=sec.querySelector('.print-committee');committees.slice(start,start+9).forEach(([title,names])=>{const a=document.createElement('article'),h=document.createElement('h3'),ul=document.createElement('ul');h.textContent=title;names.forEach(name=>{const li=document.createElement('li');li.textContent=name;ul.append(li)});a.append(h,ul);grid.append(a)})}
+sheet('<p class="section-number">LIRIK LAGU</p><h2>Seindah Impian,<br>Segemilang Harapan.</h2><div class="print-lyrics">'+'<div>'+[...document.querySelectorAll('.lyrics>div>p')].slice(0,3).map(p=>p.outerHTML).join('')+'</div><div>'+[...document.querySelectorAll('.lyrics>div>p')].slice(3).map(p=>p.outerHTML).join('')+'</div>'+'</div><p class="print-closing">Satu Perjalanan, Seribu Kenangan.</p>');
+document.getElementById('preview-book').addEventListener('click',()=>{document.body.classList.add('book-view');window.scrollTo(0,0)});document.getElementById('back-to-site').addEventListener('click',()=>{document.body.classList.remove('book-view');document.getElementById('buku').scrollIntoView()});document.getElementById('print-book-now').addEventListener('click',()=>window.print());document.getElementById('qr-upload').addEventListener('change',e=>{const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{const img=document.createElement('img');img.alt='QR akses buku program';img.src=reader.result;document.getElementById('qr-slot').replaceChildren(img)};reader.readAsDataURL(file)});
+
+</script>
+<script>
+(function() {
+    const kanvas = document.getElementById('skrin-bunga-api');
+    const ctx = kanvas.getContext('2d');
+    let lebar, tinggi;
+
+    function larasSaiz() {
+        lebar = kanvas.width = window.innerWidth;
+        tinggi = kanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', larasSaiz);
+    larasSaiz();
+
+    const roket = [];
+    const percikan = [];
+
+    // Palet warna mewah (Emas Champagne, Emas Diraja, Perak, Merah Delima lembut)
+    const paletElegan = [
+        { h: 42, s: 95, l: 48 },   // Emas Diraja (jelas pada kedua-dua latar)
+        { h: 35, s: 90, l: 42 },   // Gangsa Hangat
+        { h: 345, s: 85, l: 38 },  // Merah Delima / Maroon
+        { h: 25, s: 85, l: 45 },   // Tembaga Berkilau
+        { h: 330, s: 75, l: 40 }   // Ros Gelap
+    ];
+
+    class Roket {
+        constructor() {
+            this.x = lebar * (0.15 + Math.random() * 0.7);
+            this.y = tinggi;
+            this.sasaranY = tinggi * (0.12 + Math.random() * 0.32);
+            this.vx = (Math.random() - 0.5) * 1.8;
+            this.vy = -(Math.random() * 3.5 + 11.5);
+            this.jejak = [];
+            this.warna = paletElegan[Math.floor(Math.random() * paletElegan.length)];
+        }
+
+        kemaskini() {
+            this.jejak.push({ x: this.x, y: this.y });
+            if (this.jejak.length > 8) this.jejak.shift();
+
+            this.x += this.vx;
+            this.y += this.vy;
+            this.vy *= 0.982; // Nyahpecutan lembut melawan graviti
+
+            // Meletup apabila mencapai puncak
+            if (this.y <= this.sasaranY || this.vy >= -1.8) {
+                ciptaLetupan(this.x, this.y, this.warna);
+                return false;
+            }
+            return true;
+        }
+
+        lukis() {
+            if (this.jejak.length < 2) return;
+            ctx.beginPath();
+            ctx.moveTo(this.jejak[0].x, this.jejak[0].y);
+            ctx.lineTo(this.x, this.y);
+            ctx.strokeStyle = `hsla(${this.warna.h}, ${this.warna.s}%, 85%, 0.75)`;
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            // Cahaya hujung roket
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+            ctx.fillStyle = '#FFFDF5';
+            ctx.fill();
+        }
+    }
+
+    class Percikan {
+        constructor(x, y, sudut, kelajuan, warna, jenis) {
+            this.x = x;
+            this.y = y;
+            this.vx = Math.cos(sudut) * kelajuan;
+            this.vy = Math.sin(sudut) * kelajuan;
+            this.jejak = [];
+            this.warna = warna;
+            this.nyawa = 1;
+            this.susut = Math.random() * 0.012 + 0.011;
+            this.geseran = 0.955;
+            this.graviti = 0.045;
+            this.berkelip = jenis === 'glitter';
+        }
+
+        kemaskini() {
+            this.jejak.push({ x: this.x, y: this.y });
+            const panjangJejak = this.berkelip ? 4 : 7;
+            if (this.jejak.length > panjangJejak) this.jejak.shift();
+
+            this.vx *= this.geseran;
+            this.vy *= this.geseran;
+            this.vy += this.graviti;
+            this.x += this.vx;
+            this.y += this.vy;
+            this.nyawa -= this.susut;
+
+            return this.nyawa > 0;
+        }
+
+        lukis() {
+            if (this.jejak.length < 2) return;
+            // Kesan kelipan halus di penghujung nyawa percikan
+            if (this.berkelip && this.nyawa < 0.45 && Math.random() > 0.55) return;
+
+            ctx.beginPath();
+            ctx.moveTo(this.jejak[0].x, this.jejak[0].y);
+            ctx.lineTo(this.x, this.y);
+
+            const kecerahan = this.warna.l + (this.nyawa * 10);
+            ctx.strokeStyle = `hsla(${this.warna.h}, ${this.warna.s}%, ${kecerahan}%, ${this.nyawa})`;
+            ctx.lineWidth = this.nyawa * 2.2;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+        }
+    }
+
+    function ciptaLetupan(x, y, warnaUtama) {
+        const jumlah = 85;
+        const gaya = Math.random() > 0.4 ? 'chrysanthemum' : 'glitter';
+
+        // Pancaran cahaya kilat seketika di pusat letupan
+        ctx.beginPath();
+        ctx.arc(x, y, 22, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${warnaUtama.h}, 100%, 90%, 0.35)`;
+        ctx.fill();
+
+        for (let i = 0; i < jumlah; i++) {
+            const sudut = (Math.PI * 2 / jumlah) * i + (Math.random() - 0.5) * 0.12;
+            // Lapisan luar & dalam untuk bentuk sfera 3D
+            const kelajuan = (Math.random() * 0.65 + 0.35) * 6.5;
+            const warnaPercik = Math.random() > 0.25 ? warnaUtama : { h: 48, s: 40, l: 88 };
+            percikan.push(new Percikan(x, y, sudut, kelajuan, warnaPercik, gaya));
+        }
+    }
+
+    function animasi() {
+        // Memadam skrin secara beransur-ansur untuk mencipta ekor cahaya yang halus tanpa menggelapkan latar belakang laman web
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.22)';
+        ctx.fillRect(0, 0, lebar, tinggi);
+
+        // Mod 'lighter' menjadikan pertindihan percikan bercahaya seperti api sebenar
+        ctx.globalCompositeOperation = 'source-over';
+
+        for (let i = roket.length - 1; i >= 0; i--) {
+            if (!roket[i].kemaskini()) {
+                roket.splice(i, 1);
+            } else {
+                roket[i].lukis();
+            }
+        }
+
+        for (let i = percikan.length - 1; i >= 0; i--) {
+            if (!percikan[i].kemaskini()) {
+                percikan.splice(i, 1);
+            } else {
+                percikan[i].lukis();
+            }
+        }
+
+        requestAnimationFrame(animasi);
+    }
+
+    // Mula animasi & pelancaran berterusan
+    animasi();
+    roket.push(new Roket());
+    setTimeout(() => roket.push(new Roket()), 600);
+
+    setInterval(() => {
+        // Hadkan bilangan serentak supaya tidak mengganggu pembacaan teks
+        if (roket.length < 3 && !document.hidden) {
+            roket.push(new Roket());
+            // Kadang-kala lancarkan 2 roket serentak untuk suasana meriah
+            if (Math.random() > 0.65) {
+                setTimeout(() => roket.push(new Roket()), 250);
+            }
+        }
+    }, 1500);
+})();
+</script>
+
+<script>
+(function() {
+    const butang = document.getElementById('butang-buka-program');
+    const skrinPembukaan = document.getElementById('skrin-pembukaan');
+    const kanvasConfetti = document.getElementById('skrin-confetti');
+    const ctx = kanvasConfetti.getContext('2d');
+
+    function larasKanvas() {
+        kanvasConfetti.width = window.innerWidth;
+        kanvasConfetti.height = window.innerHeight;
+    }
+    window.addEventListener('resize', larasKanvas);
+    larasKanvas();
+
+    // Fungsi bunyi kord emas mewah (Web Audio API - tanpa fail luar)
+    function mainkanBunyiPerasmian() {
+        try {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            const audioCtx = new AudioCtx();
+            const nota = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // Kord C Major berkilau
+
+            nota.forEach((frekuensi, indeks) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                const masaMula = audioCtx.currentTime + (indeks * 0.075);
+
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(frekuensi, masaMula);
+
+                gain.gain.setValueAtTime(0.001, masaMula);
+                gain.gain.exponentialRampToValueAtTime(0.18, masaMula + 0.03);
+                gain.gain.exponentialRampToValueAtTime(0.0001, masaMula + 1.4);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start(masaMula);
+                osc.stop(masaMula + 1.45);
+            });
+        } catch (e) {
+            // Abaikan secara senyap jika peranti menyekat audio
+        }
+    }
+
+    const warnaConfetti = ['#D4AF37', '#F3D98B', '#800020', '#E6B8A2', '#FFFDF8', '#C59B27'];
+    let kepingan = [];
+    let aktif = false;
+
+    function ciptaConfetti() {
+        kepingan = [];
+        const jumlah = 140;
+        for (let i = 0; i < jumlah; i++) {
+            kepingan.push({
+                x: kanvasConfetti.width / 2 + (Math.random() - 0.5) * 160,
+                y: kanvasConfetti.height * 0.55,
+                vx: (Math.random() - 0.5) * 18,
+                vy: -(Math.random() * 14 + 7),
+                saizW: Math.random() * 9 + 5,
+                saizH: Math.random() * 5 + 3,
+                warna: warnaConfetti[Math.floor(Math.random() * warnaConfetti.length)],
+                sudut: Math.random() * Math.PI * 2,
+                putaran: (Math.random() - 0.5) * 0.25,
+                graviti: 0.35 + Math.random() * 0.15,
+                seretan: 0.96,
+                kelegapan: 1
+            });
+        }
+    }
+
+    function animasiConfetti() {
+        if (!aktif) return;
+        ctx.clearRect(0, 0, kanvasConfetti.width, kanvasConfetti.height);
+
+        let masihAda = false;
+
+        for (let i = 0; i < kepingan.length; i++) {
+            const p = kepingan[i];
+            p.vx *= p.seretan;
+            p.vy *= p.seretan;
+            p.vy += p.graviti;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.sudut += p.putaran;
+
+            if (p.y > kanvasConfetti.height * 0.75) {
+                p.kelegapan -= 0.025;
+            }
+
+            if (p.kelegapan > 0 && p.y < kanvasConfetti.height + 30) {
+                masihAda = true;
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, p.kelegapan);
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.sudut);
+                ctx.fillStyle = p.warna;
+                ctx.fillRect(-p.saizW / 2, -p.saizH / 2, p.saizW, p.saizH);
+                ctx.restore();
+            }
+        }
+
+        if (masihAda) {
+            requestAnimationFrame(animasiConfetti);
+        } else {
+            aktif = false;
+            ctx.clearRect(0, 0, kanvasConfetti.width, kanvasConfetti.height);
+        }
+    }
+
+    butang.addEventListener('click', function() {
+        mainkanBunyiPerasmian();
+        skrinPembukaan.classList.add('hilang');
+        ciptaConfetti();
+        if (!aktif) {
+            aktif = true;
+            animasiConfetti();
+        }
+    });
+})();
+</script>
+
+<style>
+  /* Susunan simetri tajuk utama + 4 ikon berwarna */
+  .hero-title-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    margin: 10px auto;
+    max-width: 100%;
+  }
+
+  .hero-title-wrap h1,
+  .hero-title-wrap h2,
+  .hero-title-wrap .hero-title {
+    margin: 0 !important;
+    line-height: 1.15;
+  }
+
+  .ikon-grad {
+    flex-shrink: 0;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.25));
+    transition: transform 0.3s ease;
+  }
+
+  .ikon-grad:hover {
+    transform: translateY(-3px) scale(1.05);
+  }
+
+  /* Pengecilan automatik supaya muat dalam 1 baris kemas di skrin telefon */
+  @media (max-width: 600px) {
+    .hero-title-wrap {
+      gap: 5px;
+    }
+    .ikon-skrol {
+      width: 24px;
+      height: 24px;
+    }
+    .ikon-topi {
+      width: 28px;
+      height: 28px;
+    }
+  }
+</style>
+
+<style>
+  /* Ruang dalam kandungan yang bergerak dengan latar maroon #4A0E17 */
+  details > *:not(summary) {
+    max-height: 130px !important;
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-behavior: auto !important;
+    background-color: #4A0E17 !important;
+    color: #ffffff !important;
+    padding: 12px 16px 18px 16px !important;
+    margin-top: 8px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+
+  /* Gaya jalur bar tatal berwarna emas lembut supaya mudah dilihat di skrin telefon */
+  details > *:not(summary)::-webkit-scrollbar {
+    width: 6px;
+  }
+  details > *:not(summary)::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+  }
+  details > *:not(summary)::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.7);
+    border-radius: 10px;
+  }
+
+  /* Pastikan semua teks & nombor senarai di dalamnya turut berwarna putih */
+  details > *:not(summary) * {
+    color: #ffffff !important;
+  }
+</style>
+
+<script>
+  document.addEventListener('toggle', function(e) {
+    const kotak = e.target;
+    if (!kotak || kotak.tagName !== 'DETAILS') return;
+
+    function hentikanAutoScroll() {
+      if (kotak._animasiId) {
+        cancelAnimationFrame(kotak._animasiId);
+        kotak._animasiId = null;
+      }
+      kotak._sedangAuto = false;
+    }
+
+    hentikanAutoScroll();
+
+    if (kotak.open) {
+      const kandungan = kotak.querySelector('summary + *');
+      if (!kandungan) return;
+
+      kandungan.scrollTop = 0;
+
+      if (!kandungan.dataset.pengesanDipasang) {
+        kandungan.dataset.pengesanDipasang = "true";
+
+        ['pointerdown', 'mousedown', 'wheel', 'touchstart'].forEach(acara => {
+          kandungan.addEventListener(acara, hentikanAutoScroll, { passive: true });
+        });
+
+        kandungan.addEventListener('scroll', function() {
+          if (kotak._sedangAuto && Math.abs(kandungan.scrollTop - kotak._posisiTerakhir) > 3) {
+            hentikanAutoScroll();
+          }
+        }, { passive: true });
+      }
+
+      setTimeout(() => {
+        if (!kotak.open) return;
+        if (kandungan.scrollHeight <= kandungan.clientHeight) return;
+
+        const kelajuan = 1.6;
+        kotak._sedangAuto = true;
+        kotak._posisiTerakhir = kandungan.scrollTop;
+
+        function gerakLancar() {
+          if (!kotak.open || !kotak._sedangAuto) return;
+
+          kandungan.scrollTop += kelajuan;
+          kotak._posisiTerakhir = kandungan.scrollTop;
+
+          if (kandungan.scrollTop + kandungan.clientHeight < kandungan.scrollHeight - 1) {
+            kotak._animasiId = requestAnimationFrame(gerakLancar);
+          } else {
+            hentikanAutoScroll();
+          }
+        }
+
+        kotak._animasiId = requestAnimationFrame(gerakLancar);
+      }, 200);
+    }
+  }, true);
+</script>
+
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Buka semua elemen <details> di dalam bahagian #lagu secara automatik
+    const lirikDetails = document.querySelectorAll('#lagu details');
+    lirikDetails.forEach(function(item) {
+      item.setAttribute('open', '');
+      item.open = true;
+    });
+  });
+</script>
+
+<style>
+  :root {
+    --royal: #4A0E17 !important;
+    --royal-deep: #2f070d !important;
+    --royal-ink: #4A0E17 !important;
+    --gold: #d4ab3a !important;
+    --gold-hi: #f7df8e !important;
+    --gold-grad: linear-gradient(135deg, #9b7414 0%, #d6ae3c 24%, #fff3c2 44%, #e7c45a 58%, #b48a1c 78%, #8c6a12 100%) !important;
+    --gold-text-grad: linear-gradient(100deg, #87650f 0%, #b48a1c 28%, #d9b142 44%, #b48a1c 60%, #87650f 100%) !important;
+  }
+
+  /* 1. Pulihkan bar menu atas supaya teks menu & logo kelihatan jelas atas latar Maroon */
+  header {
+    background: #4A0E17 !important;
+    background-color: #4A0E17 !important;
+    border-bottom: 1.5px solid #d4ab3a !important;
+  }
+
+  header a,
+  header nav a,
+  header .brand,
+  header .brand strong,
+  header button,
+  header span {
+    color: #FFF8E7 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  header .brand small,
+  header nav a:hover,
+  header nav a.active {
+    color: #d4ab3a !important;
+  }
+
+  /* Pastikan tiada jalur kilauan pada menu bar atas */
+  header nav a::after,
+  header a::after {
+    content: none !important;
+    animation: none !important;
+  }
+
+  /* 2. Hentikan animasi timbul pada butang SPLASH SCREEN & samakan dengan butang Atur Cara Majlis */
+  #splash button,
+  #splash a,
+  .splash button,
+  .splash a,
+  .cover button,
+  .cover a,
+  .intro button,
+  .intro a,
+  .gate button,
+  .overlay button,
+  body > div:first-of-type button,
+  body > div:first-of-type a[class*="btn"],
+  .hero .button,
+  .hero a[class*="btn"],
+  main a[class*="btn"],
+  main button[class*="btn"],
+  .cta {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 9999px !important;
+    padding: 12px 30px !important;
+    background: var(--gold-grad) !important;
+    color: #4A0E17 !important;
+    border: 1.5px solid #f7df8e !important;
+    font-weight: 700 !important;
+    box-shadow: 0 6px 18px rgba(74, 14, 23, 0.35) !important;
+    text-decoration: none !important;
+    animation: none !important; /* Hentikan gerakan timbul pada butang */
+    transform: none !important;
+  }
+
+  /* 3. Pasang lapisan kilauan melintas (kanan ke kiri) pada kedua-dua butang */
+  #splash button::after,
+  #splash a::after,
+  .splash button::after,
+  .splash a::after,
+  .cover button::after,
+  .cover a::after,
+  .intro button::after,
+  .intro a::after,
+  .gate button::after,
+  .overlay button::after,
+  body > div:first-of-type button::after,
+  body > div:first-of-type a[class*="btn"]::after,
+  .hero .button::after,
+  .hero a[class*="btn"]::after,
+  main a[class*="btn"]::after,
+  main button[class*="btn"]::after,
+  .cta::after {
+    content: "" !important;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.7) 50%, transparent 80%);
+    transform: translateX(260%) skewX(18deg);
+    animation: sheenKananKeKiri 4.5s ease-in-out infinite !important;
+    pointer-events: none;
+  }
+
+  @keyframes sheenKananKeKiri {
+    0%, 58% { transform: translateX(260%) skewX(18deg); }
+    100%    { transform: translateX(-140%) skewX(18deg); }
+  }
+
+/* Efek emas metalik berkilau bergerak pada nombor 2026 */
+  .kilau-2026 {
+    display: inline-block;
+    background: linear-gradient(
+      110deg,
+      #9b7414 0%,
+      #d4ab3a 25%,
+      #fff8dc 45%,
+      #ffffff 50%,
+      #fff8dc 55%,
+      #d4ab3a 75%,
+      #9b7414 100%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    animation: kilauTeks2026 4.5s ease-in-out infinite;
+    filter: drop-shadow(0 2px 6px rgba(212, 171, 58, 0.25));
+  }
+
+  /* Kilauan melintas merentasi nombor 2026 setiap 4.5 saat */
+  @keyframes kilauTeks2026 {
+    0%, 55% {
+      background-position: 120% 0;
+    }
+    100% {
+      background-position: -120% 0;
+    }
+  }
+
+/* Kesan Timbul & Sentuhan pada Butang Skrin Pembukaan & Butang Atur Cara */
+  #butang-buka-program,
+  #skrin-pembukaan button,
+  .hero .button,
+  .hero a[class*="btn"],
+  main a[class*="btn"],
+  main button[class*="btn"],
+  .cta {
+    transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.18s ease !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  /* Timbul sedikit ke atas bila disentuh/klik atau kursor lalu */
+  #butang-buka-program:hover,
+  #skrin-pembukaan button:hover,
+  .hero .button:hover,
+  .hero a[class*="btn"]:hover,
+  main a[class*="btn"]:hover,
+  main button[class*="btn"]:hover,
+  .cta:hover,
+  #butang-buka-program:active,
+  #skrin-pembukaan button:active,
+  .hero .button:active,
+  .hero a[class*="btn"]:active,
+  main a[class*="btn"]:active,
+  main button[class*="btn"]:active,
+  .cta:active {
+    transform: translateY(-4px) scale(1.03) !important;
+    box-shadow: 0 12px 24px rgba(74, 14, 23, 0.45), 0 0 12px rgba(212, 171, 58, 0.5) !important;
+  }
+
+  /* Kesan Timbul pada Butang & Pautan Bar Menu Atas */
+  header nav a,
+  header a,
+  header button {
+    display: inline-block !important;
+    transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), color 0.18s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  header nav a:hover,
+  header nav a:active,
+  header button:hover,
+  header button:active {
+    transform: translateY(-3px) scale(1.05) !important;
+    color: #d4ab3a !important;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4) !important;
+  }
+
+/* Bar Menu Satu Baris Kemas & Langsing */
+  header {
+    height: auto !important;
+    min-height: 58px !important;
+    padding: 6px 3.5vw !important;
+    gap: 14px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  /* Kekalkan logo & nama sekolah pada saiz jelas */
+  .brand {
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .brand img {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .brand strong {
+    font-size: 16px !important;
+    line-height: 1.1 !important;
+  }
+
+  .brand small {
+    font-size: 7px !important;
+    letter-spacing: 1.8px !important;
+    margin-top: 2px !important;
+  }
+
+  /* Rapatkan pautan menu supaya muat satu baris */
+  header nav {
+    gap: 12px !important;
+    padding: 0 !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-end !important;
+  }
+
+  header nav a {
+    font-size: 10.5px !important;
+    letter-spacing: 0.3px !important;
+    padding: 4px 0 !important;
+    white-space: nowrap !important;
+  }
+
+  html {
+    scroll-padding-top: 70px !important;
+  }
+
+  /* Paparan skrin kecil (tablet/telefon) */
+  @media (max-width: 1100px) {
+    header {
+      flex-wrap: wrap !important;
+      padding: 8px 16px !important;
+      gap: 6px !important;
+    }
+    header nav {
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 4px 12px !important;
+    }
+    html {
+      scroll-padding-top: 105px !important;
+    }
+  }
+</style>
+
+<style>
+  /* Susun Logo Bersebelahan Nama Sekolah & Bar Menu Satu Baris */
+  header {
+    height: auto !important;
+    min-height: 58px !important;
+    padding: 6px 3.5vw !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    gap: 16px !important;
+  }
+
+  /* Bekas Logo + Nama Sekolah (Sentiasa Bersebelahan) */
+  header .brand {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+    margin-right: auto !important;
+    text-align: left !important;
+  }
+
+  header .brand img {
+    width: 42px !important;
+    height: 42px !important;
+    flex-shrink: 0 !important;
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  header .brand strong {
+    font-size: 16px !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+  }
+
+  header .brand small {
+    font-size: 7px !important;
+    letter-spacing: 1.8px !important;
+    margin-top: 2px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Pautan Menu di Sebelah Kanan */
+  header nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+
+  header nav a {
+    font-size: 10.5px !important;
+    letter-spacing: 0.3px !important;
+    padding: 4px 0 !important;
+    white-space: nowrap !important;
+  }
+
+  html {
+    scroll-padding-top: 70px !important;
+  }
+
+  /* Paparan Tablet & Telefon (Bawah 1100px) */
+  @media (max-width: 1100px) {
+    header {
+      flex-wrap: wrap !important;
+      padding: 8px 16px !important;
+      gap: 6px !important;
+    }
+
+    header .brand {
+      margin-right: auto !important;
+    }
+
+    header nav {
+      width: 100% !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 4px 12px !important;
+      padding-top: 4px !important;
+    }
+
+    html {
+      scroll-padding-top: 105px !important;
+    }
+  }
+
+
+
+</style>
+
+<style>
+  
+  @media print {
+    details > *:not(summary) {
+      max-height: none !important;
+      overflow: visible !important;
+      background: transparent !important;
+      color: #4A0E17 !important;
+      border: 0 !important;
+      padding: 4px 0 !important;
+    }
+    details > *:not(summary) * {
+      color: #4A0E17 !important;
+    }
+  }
+
+  /* Susunan kotak kiri (pemain lagu) & kotak kanan (lirik) sama saiz dan sama tinggi */
+  .song .wrap {
+    display: flex !important;
+    align-items: stretch !important;
+    gap: 32px !important;
+  }
+
+  .song .song-player,
+  .song .lyrics {
+    flex: 1 1 50% !important;
+    width: 50% !important;
+    min-height: 460px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .song .song-player {
+    justify-content: space-between !important;
+  }
+
+  .song .lyrics {
+    overflow: hidden !important;
+    padding: 28px !important;
+  }
+
+  /* Tajuk Lirik kekal di atas */
+  .song .lyrics summary {
+    flex-shrink: 0 !important;
+    padding-bottom: 14px !important;
+    margin-bottom: 12px !important;
+    border-bottom: 1px solid rgba(74, 14, 23, 0.15) !important;
+  }
+
+  /* Kawasan Skrol Lirik yang luas memenuhi keseluruhan kotak */
+  .song .lyrics > div {
+    flex: 1 1 auto !important;
+    height: 100% !important;
+    max-height: 360px !important;
+    overflow-y: auto !important;
+    padding-right: 14px !important;
+    scroll-behavior: auto !important;
+  }
+
+  
+  .song .lyrics > div {
+    background-color: transparent !important;
+    color: var(--maroon) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    margin-top: 0 !important;
+    padding: 0 14px 0 0 !important;
+  }
+  .song .lyrics > div * {
+    color: var(--maroon) !important;
+  }
+
+  /* Bar skrol emas di tepi */
+  .song .lyrics > div::-webkit-scrollbar {
+    width: 6px !important;
+  }
+  .song .lyrics > div::-webkit-scrollbar-track {
+    background: rgba(74, 14, 23, 0.06) !important;
+    border-radius: 10px !important;
+  }
+  .song .lyrics > div::-webkit-scrollbar-thumb {
+    background: #d4ab3a !important;
+    border-radius: 10px !important;
+  }
+
+  /* Paparan Telefon (Bawah 760px) */
+  @media (max-width: 760px) {
+    .song .wrap {
+      flex-direction: column !important;
+    }
+    .song .song-player,
+    .song .lyrics {
+      flex: none !important;
+      width: 100% !important;
+      min-height: 380px !important;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    // Hentikan sebarang skrol lama jika masih aktif supaya kelajuan tidak berganda
+    if (window.lirikScrollTimer) {
+      cancelAnimationFrame(window.lirikScrollTimer);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const kotakLirik = document.querySelector(".song .lyrics");
+      const ruangSkrol = document.querySelector(".song .lyrics > div");
+
+      if (!kotakLirik || !ruangSkrol) return;
+
+      if (kotakLirik.tagName.toLowerCase() === "details") {
+        kotakLirik.setAttribute("open", "true");
+      }
+
+      let jedaSkrol = false;
+      // Kelajuan perlahan mengikut tempo nyanyian (~10-12 piksel sesaat)
+      // Boleh ubah nilai 0.18 ini (contoh: 0.14 lebih perlahan, 0.22 sedikit laju)
+      const kelajuanNyanyian = 0.18;
+      let kedudukanSemasa = ruangSkrol.scrollTop;
+
+      ruangSkrol.addEventListener("mouseenter", () => (jedaSkrol = true));
+      ruangSkrol.addEventListener("mouseleave", () => {
+        kedudukanSemasa = ruangSkrol.scrollTop;
+        jedaSkrol = false;
+      });
+      ruangSkrol.addEventListener("touchstart", () => (jedaSkrol = true), { passive: true });
+      ruangSkrol.addEventListener("touchend", () => {
+        setTimeout(() => {
+          kedudukanSemasa = ruangSkrol.scrollTop;
+          jedaSkrol = false;
+        }, 2500);
+      });
+
+      function gerakLirikNyanyian() {
+        if (!jedaSkrol && ruangSkrol.scrollHeight > ruangSkrol.clientHeight) {
+          kedudukanSemasa += kelajuanNyanyian;
+          ruangSkrol.scrollTop = kedudukanSemasa;
+
+          // Apabila tamat rangkap akhir, tunggu 3 saat sebelum ulang semula dari atas
+          if (ruangSkrol.scrollTop + ruangSkrol.clientHeight >= ruangSkrol.scrollHeight - 1) {
+            jedaSkrol = true;
+            setTimeout(() => {
+              ruangSkrol.scrollTop = 0;
+              kedudukanSemasa = 0;
+              jedaSkrol = false;
+            }, 3000);
+          }
+        }
+        window.lirikScrollTimer = requestAnimationFrame(gerakLirikNyanyian);
+      }
+
+      // Beri masa 2.5 saat sebelum mula bergerak (menunggu intro muzik)
+      setTimeout(() => {
+        window.lirikScrollTimer = requestAnimationFrame(gerakLirikNyanyian);
+      }, 2500);
+    });
+  })();
+</script>
+
+</body></html>
